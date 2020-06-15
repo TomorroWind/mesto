@@ -19,7 +19,7 @@
   </head>
   <body class="page">
     <div class="content page__content">
-      <header class="header">
+      <header class="header content__header">
         <img
           src="./images/logo-wite.svg"
           alt="Логотип: Место "
@@ -27,7 +27,20 @@
         />
       </header>
       <main>
-        <section></section>
+        <section class="profile">
+          <img
+            src="./images/avatar-custo.jpg"
+            alt="Фотография Жак-Ив Кусто"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <h1 class="profile__full-name">
+              Жак-Ив Кусто<input type="button" class="profile__edit-btn" />
+            </h1>
+            <p class="profile__description">Исследователь океана</p>
+          </div>
+          <input type="button" class="add-btn" />
+        </section>
       </main>
       <footer></footer>
     </div>
