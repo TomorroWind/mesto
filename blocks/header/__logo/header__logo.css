@@ -1,0 +1,8 @@
+.header__logo {
+  max-width: 140px;
+  min-width: 100px;
+  width: calc(7vw + 77.6px);
+  object-fit: cover;
+  object-position: center;
+}
+

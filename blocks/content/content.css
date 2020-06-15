@@ -1,0 +1,7 @@
+.content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 920px;
+  min-width: 320px;
+  padding: 40px 20px 60px 20px;
+}
