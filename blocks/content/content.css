@@ -1,4 +1,5 @@
 @import url(./__header/content__header.css);
+@import url(./__profile/content__profile.css);
 
 .content {
   box-sizing: border-box;
