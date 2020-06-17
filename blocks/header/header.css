@@ -6,4 +6,8 @@
   position: relative;
 }
 
-
+@media screen and (max-width: 720px) {
+  .header {
+    padding-bottom: 30px;
+  }
+}

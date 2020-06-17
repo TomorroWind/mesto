@@ -1,0 +1,19 @@
+.copyright {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #545454;
+}
+
+@media screen and (max-width: 720px) {
+  .copyright {
+    font-size: calc(1vw + 10.8px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .copyright {
+    font-size: 14px;
+  }
+}
