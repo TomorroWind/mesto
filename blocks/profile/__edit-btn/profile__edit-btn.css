@@ -1,4 +1,5 @@
 .profile__edit-btn {
+  align-self: center;
   display: inline-block;
   max-width: 24px;
   min-width: 18px;
@@ -31,5 +32,6 @@
   .profile__edit-btn {
     width: calc(1.5vw + 13.2px);
     height: calc(1.5vw + 13.2px);
+    margin-left: 10px;
   }
 }
