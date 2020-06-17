@@ -1,13 +1,12 @@
 .profile__info {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 300px 1fr;
-  margin: 0;
+  grid-template-columns: minmax(50px, max-content) 1fr;
+  margin: 0 20px 0 0;
 }
 
 @media screen and (max-width: 720px) {
   .profile__info {
-    grid-template-columns: minmax(180px, max-content) auto;
-    margin-bottom: 36px;
+    margin: 0 0 36px 0;
   }
 }

@@ -1,6 +1,6 @@
 .add-btn {
-  width: 150px;
-  height: 50px;
+  min-width: 150px;
+  min-height: 50px;
   background-image: url(../../images/cross.png);
   background-size: 22px 22px;
   background-position: center;
