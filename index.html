@@ -1,45 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <!-- meta section -->
+    <!-- *meta section -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="место javascript Яндекс.Практикум" />
+    <!-- Файлы форматированы с использованием Prettier -->
     <meta
       name="keywords"
       content="html, css, javascript, forms, popup, обучение, web программирование"
     />
     <meta name="author" content="Михаил Пименов" />
 
-    <!-- General section -->
+    <!-- *General section -->
     <title>Место</title>
 
-    <!--CSS section-->
+    <!-- *CSS section-->
     <link rel="stylesheet" href="./styles/index.css" />
   </head>
   <body class="page">
-    <form class="popup">
-      <for class="popup_container">
-        <h2 class="popup__header">Редактировать профиль</h2>
-        <input
-          type="input"
-          placeholder="Полное имя"
-          class="input-text popup__full-name"
-        />
-        <input
-          type="input"
-          placeholder="Описание"
-          class="input-text popup__description"
-        />
-        <input type="submit" value="Сохранить" class="popup__save-btn" />
-        <input type="button" class="popup__close-btn" />
-      </for>
-    </form>
     <div class="content page__content">
       <!-- *header section -->
       <header class="header content__header">
         <img
-          src="./images/logo-wite.svg"
+          src="./images/logo-white.svg"
           alt="Логотип: Место "
           class="header__logo"
         />
@@ -56,10 +40,10 @@
             <h1 class="profile__full-name">
               Жак-Ив Кусто
             </h1>
-            <input type="button" class="profile__edit-btn" />
+            <button type="button" class="profile__edit-btn"></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <input type="button" class="add-btn" />
+          <button type="button" class="add-btn"></button>
         </section>
 
         <!-- *Places section -->
@@ -72,7 +56,7 @@
             />
             <div class="place__description">
               <h3 class="place__name">Карачаевск</h3>
-              <input type="button" class="place__like" />
+              <button type="button" class="place__like"></button>
             </div>
           </article>
           <article class="place">
@@ -83,7 +67,7 @@
             />
             <div class="place__description">
               <h3 class="place__name">Гора Эльбрус</h3>
-              <input type="button" class="place__like" />
+              <button type="button" class="place__like"></button>
             </div>
           </article>
           <article class="place">
@@ -94,7 +78,7 @@
             />
             <div class="place__description">
               <h3 class="place__name">Домбай</h3>
-              <input type="button" class="place__like" />
+              <button type="button" class="place__like"></button>
             </div>
           </article>
           <article class="place">
@@ -105,7 +89,7 @@
             />
             <div class="place__description">
               <h3 class="place__name">Гора Эльбрус</h3>
-              <input type="button" class="place__like" />
+              <button type="button" class="place__like"></button>
             </div>
           </article>
           <article class="place">
@@ -116,7 +100,7 @@
             />
             <div class="place__description">
               <h3 class="place__name">Домбай</h3>
-              <input type="button" class="place__like" />
+              <button type="button" class="place__like"></button>
             </div>
           </article>
           <article class="place">
@@ -127,19 +111,50 @@
             />
             <div class="place__description">
               <h3 class="place__name">Карачаево-Черкесия</h3>
-              <input type="button" class="place__like" />
+              <button type="button" class="place__like"></button>
             </div>
           </article>
         </section>
       </main>
 
       <!-- *Footer section -->
-      <footer>
-        <p class="copyright">&COPY; 2020 Mesto Russia</p>
+      <footer class="footer">
+        <p class="footer__copyright">&COPY; 2020 Mesto Russia</p>
       </footer>
     </div>
 
-    <!--My JS section-->
+    <!-- *Popup form -->
+    <form method="POST" action="#" class="popup">
+      <div class="popup__container">
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <!--
+          Не понял замечания и требования к текстовым полям.
+          Стили для текстового поля могут применяться не только на этой форме, но и на других.
+          Было бы странно если бы для каждой формы дизайнер делал бы разное оформление текстовых полей
+          Значит использование блока для текста оправданно
+          В блоке не задано позиционирование
+          Оно задается через микс, так как блок текста является элементом блока popup
+         -->
+        <input
+          type="text"
+          placeholder="Полное имя"
+          name="fullname"
+          required
+          class="input-text popup__full-name"
+        />
+        <input
+          type="text"
+          placeholder="Описание"
+          name="description"
+          required
+          class="input-text popup__description"
+        />
+        <button type="submit" class="popup__save-btn">Сохранить</button>
+        <button type="button" class="popup__close-btn"></button>
+      </div>
+    </form>
+
+    <!-- *My JS section-->
     <script src="./scripts/script.js"></script>
   </body>
 </html>

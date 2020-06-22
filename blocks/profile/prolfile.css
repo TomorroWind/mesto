@@ -3,6 +3,7 @@
 @import url(./__full-name/profile__full-name.css);
 @import url(./__description/profile__description.css);
 @import url(./__edit-btn/profile__edit-btn.css);
+@import url(./__add-btn/profile__add-btn.css);
 
 .profile {
   display: flex;
@@ -14,8 +15,5 @@
 @media screen and (max-width: 720px) {
   .profile {
     flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
   }
-
 }

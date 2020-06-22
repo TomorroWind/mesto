@@ -1,19 +1,20 @@
-.copyright {
+.footer__copyright {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 1.22;
   color: #545454;
+  margin: 0;
 }
 
 @media screen and (max-width: 720px) {
-  .copyright {
+  .footer__copyright {
     font-size: calc(1vw + 10.8px);
   }
 }
 
 @media screen and (max-width: 320px) {
-  .copyright {
+  .footer__copyright {
     font-size: 14px;
   }
 }
