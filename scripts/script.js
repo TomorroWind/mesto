@@ -1,8 +1,8 @@
 // *popup elements
 let popup = document.querySelector(".popup");
 let popupCloseBtn = document.querySelector(".popup__close-btn");
-let popupFullName = document.querySelector(".popup__full-name");
-let popupDescription = document.querySelector(".popup__description");
+let popupFullName = document.querySelector(".popup__input_el_full-name");
+let popupDescription = document.querySelector(".popup__input_el_description");
 
 // *profile elements
 let profileEditBtn = document.querySelector(".profile__edit-btn");

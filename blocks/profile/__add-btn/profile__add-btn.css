@@ -1,4 +1,4 @@
-.add-btn {
+.profile__add-btn {
   min-width: 150px;
   min-height: 50px;
   background-image: url(../../../images/cross.svg);
@@ -14,19 +14,19 @@
   cursor: pointer;
 }
 
-.add-btn:hover {
+.profile__add-btn:hover {
   opacity: 0.6;
   transition: opacity ease-out 0.4s;
 }
 
-.add-btn:active {
+.profile__add-btn:active {
   border: 2px solid #ffffff;
   border-radius: 2px;
   outline: none;
 }
 
 @media screen and (max-width: 720px) {
-  .add-btn {
+  .profile__add-btn {
     width: 100%;
   }
 }

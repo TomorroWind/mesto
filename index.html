@@ -1,160 +1,110 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <!-- *meta section -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="место javascript Яндекс.Практикум" />
-    <!-- Файлы форматированы с использованием Prettier -->
-    <meta
-      name="keywords"
-      content="html, css, javascript, forms, popup, обучение, web программирование"
-    />
-    <meta name="author" content="Михаил Пименов" />
 
-    <!-- *General section -->
-    <title>Место</title>
+<head>
+  <!-- *meta section -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="место javascript Яндекс.Практикум" />
+  <!-- Файлы форматированы с использованием Prettier -->
+  <meta name="keywords" content="html, css, javascript, forms, popup, обучение, web программирование" />
+  <meta name="author" content="Михаил Пименов" />
 
-    <!-- *CSS section-->
-    <link rel="stylesheet" href="./styles/index.css" />
-  </head>
-  <body class="page">
-    <div class="content page__content">
-      <!-- *header section -->
-      <header class="header content__header">
-        <img
-          src="./images/logo-white.svg"
-          alt="Логотип: Место "
-          class="header__logo"
-        />
-      </header>
-      <main>
-        <!-- *Profile section -->
-        <section class="profile content__profile">
-          <img
-            src="./images/avatar-custo.jpg"
-            alt="Фотография Жак-Ив Кусто"
-            class="profile__avatar"
-          />
-          <div class="profile__info">
-            <h1 class="profile__full-name">
-              Жак-Ив Кусто
-            </h1>
-            <button type="button" class="profile__edit-btn"></button>
-            <p class="profile__description">Исследователь океана</p>
+  <!-- *General section -->
+  <title>Место</title>
+
+  <!-- *CSS section-->
+  <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<body class="page">
+  <div class="content page__content">
+    <!-- *header section -->
+    <header class="header content__header">
+      <img src="./images/logo-white.svg" alt="Логотип: Место " class="header__logo" />
+    </header>
+    <main>
+      <!-- *Profile section -->
+      <section class="profile content__profile">
+        <img src="./images/avatar-custo.jpg" alt="Фотография пользователя" class="profile__avatar" />
+        <div class="profile__info">
+          <h1 class="profile__full-name">
+            Жак-Ив Кусто
+          </h1>
+          <button type="button" aria-label="Редактировать профиль" class="profile__edit-btn"></button>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+        <button type="button" aria-label="Добавить место" class="profile__add-btn"></button>
+      </section>
+
+      <!-- *Places section -->
+      <section class="places content__places">
+        <article class="place">
+          <img src="./images/card-karchaevsk.jpg" alt="Фотография Карачаевска" class="place__photo" />
+          <div class="place__description">
+            <h3 class="place__name">Карачаевск</h3>
+            <button type="button" class="place__like"></button>
           </div>
-          <button type="button" class="add-btn"></button>
-        </section>
+        </article>
+        <article class="place">
+          <img src="./images/card-elbrus.png" alt="Фоторография Эльбруса" class="place__photo" />
+          <div class="place__description">
+            <h3 class="place__name">Гора Эльбрус</h3>
+            <button type="button" class="place__like"></button>
+          </div>
+        </article>
+        <article class="place">
+          <img src="./images/card-dombai.png" alt="Фотография Донбай" class="place__photo" />
+          <div class="place__description">
+            <h3 class="place__name">Домбай</h3>
+            <button type="button" class="place__like"></button>
+          </div>
+        </article>
+        <article class="place">
+          <img src="./images/card-elbrus.png" alt="Фоторография Эльбруса" class="place__photo" />
+          <div class="place__description">
+            <h3 class="place__name">Гора Эльбрус</h3>
+            <button type="button" class="place__like"></button>
+          </div>
+        </article>
+        <article class="place">
+          <img src="./images/card-dombai.png" alt="Фотография Донбай" class="place__photo" />
+          <div class="place__description">
+            <h3 class="place__name">Домбай</h3>
+            <button type="button" class="place__like"></button>
+          </div>
+        </article>
+        <article class="place">
+          <img src="./images/card-karchaevsk.jpg" alt="Фотография Карачаевска" class="place__photo" />
+          <div class="place__description">
+            <h3 class="place__name">Карачаево-Черкесия</h3>
+            <button type="button" class="place__like"></button>
+          </div>
+        </article>
+      </section>
+    </main>
 
-        <!-- *Places section -->
-        <section class="places content__places">
-          <article class="place">
-            <img
-              src="./images/card-karchaevsk.jpg"
-              alt="Фотография Карачаевска"
-              class="place__photo"
-            />
-            <div class="place__description">
-              <h3 class="place__name">Карачаевск</h3>
-              <button type="button" class="place__like"></button>
-            </div>
-          </article>
-          <article class="place">
-            <img
-              src="./images/card-elbrus.png"
-              alt="Фоторография Эльбруса"
-              class="place__photo"
-            />
-            <div class="place__description">
-              <h3 class="place__name">Гора Эльбрус</h3>
-              <button type="button" class="place__like"></button>
-            </div>
-          </article>
-          <article class="place">
-            <img
-              src="./images/card-dombai.png"
-              alt="Фотография Донбай"
-              class="place__photo"
-            />
-            <div class="place__description">
-              <h3 class="place__name">Домбай</h3>
-              <button type="button" class="place__like"></button>
-            </div>
-          </article>
-          <article class="place">
-            <img
-              src="./images/card-elbrus.png"
-              alt="Фоторография Эльбруса"
-              class="place__photo"
-            />
-            <div class="place__description">
-              <h3 class="place__name">Гора Эльбрус</h3>
-              <button type="button" class="place__like"></button>
-            </div>
-          </article>
-          <article class="place">
-            <img
-              src="./images/card-dombai.png"
-              alt="Фотография Донбай"
-              class="place__photo"
-            />
-            <div class="place__description">
-              <h3 class="place__name">Домбай</h3>
-              <button type="button" class="place__like"></button>
-            </div>
-          </article>
-          <article class="place">
-            <img
-              src="./images/card-karchaevsk.jpg"
-              alt="Фотография Карачаевска"
-              class="place__photo"
-            />
-            <div class="place__description">
-              <h3 class="place__name">Карачаево-Черкесия</h3>
-              <button type="button" class="place__like"></button>
-            </div>
-          </article>
-        </section>
-      </main>
+    <!-- *Footer section -->
+    <footer class="footer">
+      <p class="footer__copyright">&COPY; 2020 Mesto Russia</p>
+    </footer>
+  </div>
 
-      <!-- *Footer section -->
-      <footer class="footer">
-        <p class="footer__copyright">&COPY; 2020 Mesto Russia</p>
-      </footer>
+  <!-- *Popup form -->
+  <form method="POST" action="#" class="popup" name="profileForm">
+    <div class="popup__container">
+      <h2 class="popup__header">Редактировать профиль</h2>
+      <input type="text" placeholder="Полное имя" name="fullname" required
+        class="popup__input popup__input_el_full-name" />
+      <input type="text" placeholder="Описание" name="description" required
+        class="popup__input popup__input_el_description" />
+      <button type="submit" class="popup__save-btn">Сохранить</button>
+      <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
     </div>
+  </form>
 
-    <!-- *Popup form -->
-    <form method="POST" action="#" class="popup">
-      <div class="popup__container">
-        <h2 class="popup__header">Редактировать профиль</h2>
-        <!--
-          Не понял замечания и требования к текстовым полям.
-          Стили для текстового поля могут применяться не только на этой форме, но и на других.
-          Было бы странно если бы для каждой формы дизайнер делал бы разное оформление текстовых полей
-          Значит использование блока для текста оправданно
-          В блоке не задано позиционирование
-          Оно задается через микс, так как блок текста является элементом блока popup
-         -->
-        <input
-          type="text"
-          placeholder="Полное имя"
-          name="fullname"
-          required
-          class="input-text popup__full-name"
-        />
-        <input
-          type="text"
-          placeholder="Описание"
-          name="description"
-          required
-          class="input-text popup__description"
-        />
-        <button type="submit" class="popup__save-btn">Сохранить</button>
-        <button type="button" class="popup__close-btn"></button>
-      </div>
-    </form>
+  <!-- *My JS section-->
+  <script src="./scripts/script.js"></script>
+</body>
 
-    <!-- *My JS section-->
-    <script src="./scripts/script.js"></script>
-  </body>
 </html>
