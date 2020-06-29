@@ -27,12 +27,19 @@ const initialCards = [
 ];
 
 // *popup elements
-const popup = document.querySelector(".popup");
-const popupCloseBtn = document.querySelector(".popup__close-btn");
-const popupFullName = document.querySelector(".popup__input_el_full-name");
-const popupDescription = document.querySelector(".popup__input_el_description");
+const popup = document.querySelector(".popup_type_edit-profile");
+const popupCloseBtn = popup.querySelector(".popup__close-btn");
+const popupFullName = popup.querySelector(".popup__input_el_full-name");
+const popupDescription = popup.querySelector(".popup__input_el_description");
+
+
+const popupPlace = document.querySelector(".popup_type_new-place");
+const popupPlaceCloseBtn = popupPlace.querySelector(".popup__close-btn");
+const popupPlaceName = popupPlace.querySelector(".popup__input_el_place-name");
+const popupPlaceLink = popupPlace.querySelector(".popup__input_el_place-link");
 
 // *profile elements
+const profileAddBtn = document.querySelector('.profile__add-btn')
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const profileFullName = document.querySelector(".profile__full-name");
 const profileDescription = document.querySelector(".profile__description");
@@ -53,9 +60,9 @@ function getProfile() {
 }
 
 /**
- * Initislaize form
+ * Initislaize profile  form
  */
-function initForm() {
+function initProfileForm() {
   let profile = getProfile();
 
   popupFullName.value = profile.fullName;
@@ -63,14 +70,18 @@ function initForm() {
 }
 
 /**
+ * Initislaize place form
+ */
+function initPlaceForm() {
+  popupPlaceName.value = '';
+  popupPlaceLink.value = '';
+}
+
+/**
  *  Open/close popup form
  */
-function togglePopup() {
-  popup.classList.toggle("popup_opened");
-
-  if (popup.classList.contains("popup_opened")) {
-    initForm();
-  }
+function togglePopup(popupElement) {
+  popupElement.classList.toggle("popup_opened");
 }
 
 /**
@@ -83,7 +94,18 @@ function formSubmitHandler(evt) {
   profileFullName.textContent = popupFullName.value.trim();
   profileDescription.textContent = popupDescription.value.trim();
 
-  togglePopup();
+  togglePopup(popup);
+}
+
+/**
+ * Handle submit event for popup-save button
+ * @param {object} evt contanin event infomration
+ */
+function formPlaceSubmitHandler(evt) {
+  evt.preventDefault();
+
+  addPlace({ name: popupPlaceName.value.trim(), imageURL: popupPlaceLink.value.trim() });
+  togglePopup(popupPlace);
 }
 
 
@@ -104,8 +126,15 @@ function initPlaces(...places) {
 }
 
 // *main
-popupCloseBtn.addEventListener("click", togglePopup);
-profileEditBtn.addEventListener("click", togglePopup);
+profileEditBtn.addEventListener("click", e => togglePopup(popup));
+profileEditBtn.addEventListener("click", initProfileForm);
+popupCloseBtn.addEventListener("click", e => togglePopup(popup));
 popup.addEventListener("submit", formSubmitHandler);
+
+profileAddBtn.addEventListener('click', e => togglePopup(popupPlace));
+profileAddBtn.addEventListener('click', initPlaceForm)
+popupPlaceCloseBtn.addEventListener("click", e => togglePopup(popupPlace));
+popupPlace.addEventListener('submit', formPlaceSubmitHandler);
+
 
 initPlaces(...initialCards);

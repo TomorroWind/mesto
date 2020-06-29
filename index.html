@@ -49,8 +49,8 @@
     </footer>
   </div>
 
-  <!-- *Popup form -->
-  <form method="POST" action="#" class="popup" name="profile-form">
+  <!-- *Popup forms -->
+  <form method="POST" action="#" class="popup popup_type_edit-profile" name="profile-form">
     <div class="popup__container">
       <h2 class="popup__header">Редактировать профиль</h2>
       <input type="text" placeholder="Полное имя" name="full-name" required
@@ -58,6 +58,18 @@
       <input type="text" placeholder="Описание" name="description" required
         class="popup__input popup__input_el_description" />
       <button type="submit" class="popup__save-btn">Сохранить</button>
+      <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
+    </div>
+  </form>
+
+  <form method="POST" action="#" class="popup popup_type_new-place" name="new-place-form">
+    <div class="popup__container">
+      <h2 class="popup__header">Новое место</h2>
+      <input type="text" placeholder="Название" name="place-name" required
+        class="popup__input popup__input_el_place-name" />
+      <input type="text" placeholder="Ссылка на картинку" name="place-link" required
+        class="popup__input popup__input_el_place-link" />
+      <button type="submit" class="popup__save-btn">Создать</button>
       <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
     </div>
   </form>
