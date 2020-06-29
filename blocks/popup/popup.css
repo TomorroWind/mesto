@@ -9,7 +9,11 @@
 
 
 .popup {
-  display: none;
+  display: flex;
+  visibility: hidden;
+   opacity: 0;
+  transition: all .25s linear;
+
   justify-content: center;
   align-items: center;
   position: fixed;
