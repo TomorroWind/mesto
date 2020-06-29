@@ -82,11 +82,19 @@ function initPlaceForm() {
   popupPlaceLink.value = '';
 }
 
+/**
+ * Inititliaze photo popup
+ * @param {Object represents photo data} photo
+ */
 function initPhotoForm(photo) {
   popupImage.src = photo.imageURL;
   popupPhotoDescription.textContent = photo.description;
 }
 
+/**
+ *  Handle click event on place's photo
+ * @param {Object} evt represent event
+ */
 function placePhotoClickHandler(evt) {
   const imageURL = evt.target.src;
   const description = evt.target.closest('.place').querySelector('.place__name').textContent.trim();
@@ -126,15 +134,26 @@ function formPlaceSubmitHandler(evt) {
   togglePopup(popupPlace);
 }
 
+/**
+ * Set/unset like on place
+ * @param {Object} likeElement represent DOM element for like
+ */
 function toggleLike(likeElement) {
   likeElement.classList.toggle('place__like_checked');
 }
 
+/**
+ * Remove place
+ * @param {object} removePlaceBtn represent button in DOM
+ */
 function removePlace(removePlaceBtn) {
   removePlaceBtn.closest('.place').remove();
 }
 
-
+/**
+ * Add place to profile
+ * @param {Object} place represent place data
+ */
 function addPlace(place) {
   const placeElement = document.querySelector('#place-template').content.cloneNode(true);
   const placePhoto = placeElement.querySelector('.place__photo');
@@ -153,6 +172,10 @@ function addPlace(place) {
 
 }
 
+/**
+ *  Initialize profile with provided places
+ * @param  {...object} places list of places
+ */
 function initPlaces(...places) {
   places.forEach(place => addPlace({ name: place.name, imageURL: place.link }));
 }
