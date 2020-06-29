@@ -1,6 +1,7 @@
 .places {
   display: grid;
   grid-template-columns: repeat(auto-fill, 280px);
+  grid-auto-rows: 360px;
   justify-content: center;
   column-gap: 18px;
   row-gap: 20px;

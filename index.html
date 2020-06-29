@@ -39,48 +39,7 @@
 
       <!-- *Places section -->
       <section class="places content__places">
-        <article class="place">
-          <img src="./images/card-karchaevsk.jpg" alt="Фотография Карачаевска" class="place__photo" />
-          <div class="place__description">
-            <h3 class="place__name">Карачаевск</h3>
-            <button type="button" class="place__like"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/card-elbrus.png" alt="Фоторография Эльбруса" class="place__photo" />
-          <div class="place__description">
-            <h3 class="place__name">Гора Эльбрус</h3>
-            <button type="button" class="place__like"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/card-dombai.png" alt="Фотография Донбай" class="place__photo" />
-          <div class="place__description">
-            <h3 class="place__name">Домбай</h3>
-            <button type="button" class="place__like"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/card-elbrus.png" alt="Фоторография Эльбруса" class="place__photo" />
-          <div class="place__description">
-            <h3 class="place__name">Гора Эльбрус</h3>
-            <button type="button" class="place__like"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/card-dombai.png" alt="Фотография Донбай" class="place__photo" />
-          <div class="place__description">
-            <h3 class="place__name">Домбай</h3>
-            <button type="button" class="place__like"></button>
-          </div>
-        </article>
-        <article class="place">
-          <img src="./images/card-karchaevsk.jpg" alt="Фотография Карачаевска" class="place__photo" />
-          <div class="place__description">
-            <h3 class="place__name">Карачаево-Черкесия</h3>
-            <button type="button" class="place__like"></button>
-          </div>
-        </article>
+        <!-- populates from JS, see place-template -->
       </section>
     </main>
 
@@ -102,6 +61,17 @@
       <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
     </div>
   </form>
+
+  <!-- *Templates -->
+  <template id="place-template">
+    <article class="place">
+      <img src="" alt="Фотография места" class="place__photo" />
+      <div class="place__description">
+        <h3 class="place__name"></h3>
+        <button type="button" class="place__like"></button>
+      </div>
+    </article>
+  </template>
 
   <!-- *My JS section-->
   <script src="./scripts/script.js"></script>
