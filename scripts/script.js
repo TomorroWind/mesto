@@ -108,14 +108,21 @@ function formPlaceSubmitHandler(evt) {
   togglePopup(popupPlace);
 }
 
+function toggleLike(likeElement) {
+  likeElement.classList.toggle('place__like_checked');
+}
+
 
 function addPlace(place) {
   const placeElement = document.querySelector('#place-template').content.cloneNode(true);
   const placePhoto = placeElement.querySelector('.place__photo');
-  placePhoto.src = place.imageURL;
-
+  const placeLike = placeElement.querySelector('.place__like');
   const placeName = placeElement.querySelector('.place__name');
+
+
+  placePhoto.src = place.imageURL;
   placeName.textContent = place.name;
+  placeLike.addEventListener('click', e => toggleLike(e.target));
 
   places.prepend(placeElement);
 
@@ -124,6 +131,7 @@ function addPlace(place) {
 function initPlaces(...places) {
   places.forEach(place => addPlace({ name: place.name, imageURL: place.link }));
 }
+
 
 // *main
 profileEditBtn.addEventListener("click", e => togglePopup(popup));
