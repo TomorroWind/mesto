@@ -4,5 +4,6 @@
   max-height: 280px;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 
 }

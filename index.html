@@ -74,6 +74,15 @@
     </div>
   </form>
 
+  <section class="popup popup_type_photo">
+    <figure class="popup__photo-container">
+      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="Фотография места"
+        class="popup__photo">
+      <figcaption class=popup__photo-description>Test</figcaption>
+      <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
+    </figure>
+  </section>
+
   <!-- *Templates -->
   <template id="place-template">
     <article class="place">
@@ -81,6 +90,7 @@
       <div class="place__description">
         <h3 class="place__name"></h3>
         <button type="button" class="place__like"></button>
+        <button type="button" class="place__remove-btn"></button>
       </div>
     </article>
   </template>

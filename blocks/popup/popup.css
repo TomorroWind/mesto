@@ -3,6 +3,10 @@
 @import url(./__header/popup__header.css);
 @import url(./__save-btn/popup__save-btn.css);
 @import url(./__input/popup__input.css);
+@import url(./__photo-container/popup__photo-container.css);
+@import url(./__photo/popup__photo.css);
+@import url(./__photo-description/popup__photo-description.css);
+
 
 .popup {
   display: none;
