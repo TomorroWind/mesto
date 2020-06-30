@@ -27,10 +27,10 @@ const initialCards = [
 ];
 
 // *popup elements
-const popup = document.querySelector('.popup_type_edit-profile');
-const popupCloseBtn = popup.querySelector('.popup__close-btn');
-const popupFullName = popup.querySelector('.popup__input_el_full-name');
-const popupDescription = popup.querySelector('.popup__input_el_description');
+const popupProfile = document.querySelector('.popup_type_edit-profile');
+const popupProfileCloseBtn = popupProfile.querySelector('.popup__close-btn');
+const popupProfileFullName = popupProfile.querySelector('.popup__input_el_full-name');
+const popupProfileDescription = popupProfile.querySelector('.popup__input_el_description');
 
 
 const popupPlace = document.querySelector('.popup_type_new-place');
@@ -70,8 +70,10 @@ function getProfile() {
 function initProfileForm() {
   let profile = getProfile();
 
-  popupFullName.value = profile.fullName;
-  popupDescription.value = profile.description;
+  popupProfileFullName.value = profile.fullName;
+  popupProfileDescription.value = profile.description;
+
+  togglePopup(popupProfile)
 }
 
 /**
@@ -80,6 +82,8 @@ function initProfileForm() {
 function initPlaceForm() {
   popupPlaceName.value = '';
   popupPlaceLink.value = '';
+
+  togglePopup(popupPlace)
 }
 
 /**
@@ -117,10 +121,10 @@ function togglePopup(popupElement) {
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
-  profileFullName.textContent = popupFullName.value.trim();
-  profileDescription.textContent = popupDescription.value.trim();
+  profileFullName.textContent = popupProfileFullName.value.trim();
+  profileDescription.textContent = popupProfileDescription.value.trim();
 
-  togglePopup(popup);
+  togglePopup(popupProfile);
 }
 
 /**
@@ -130,7 +134,9 @@ function formSubmitHandler(evt) {
 function formPlaceSubmitHandler(evt) {
   evt.preventDefault();
 
-  addPlace({ name: popupPlaceName.value.trim(), imageURL: popupPlaceLink.value.trim() });
+  const placeEmenent = createPlaceElement({ name: popupPlaceName.value.trim(), imageURL: popupPlaceLink.value.trim() });
+  addPlaceToProfile(placeEmenent);
+
   togglePopup(popupPlace);
 }
 
@@ -151,10 +157,10 @@ function removePlace(removePlaceBtn) {
 }
 
 /**
- * Add place to profile
+ * Create place block
  * @param {Object} place represent place data
  */
-function addPlace(place) {
+function createPlaceElement(place) {
   const placeElement = document.querySelector('#place-template').content.cloneNode(true);
   const placePhoto = placeElement.querySelector('.place__photo');
   const placeLike = placeElement.querySelector('.place__like');
@@ -163,13 +169,21 @@ function addPlace(place) {
 
 
   placePhoto.src = place.imageURL;
+  placePhoto.alt = `Фотография места: ${place.name}`;
   placeName.textContent = place.name;
   placeLike.addEventListener('click', e => toggleLike(e.target));
   placeRemoveBtn.addEventListener('click', e => removePlace(e.target));
   placePhoto.addEventListener('click', placePhotoClickHandler);
 
-  places.prepend(placeElement);
+  return placeElement;
+}
 
+/**
+ * Add place to profile
+ * @param {Object} placeElement is a html node represented place block
+ */
+function addPlaceToProfile(placeElement) {
+  places.prepend(placeElement);
 }
 
 /**
@@ -177,21 +191,22 @@ function addPlace(place) {
  * @param  {...object} places list of places
  */
 function initPlaces(...places) {
-  places.forEach(place => addPlace({ name: place.name, imageURL: place.link }));
+  places.forEach(place => {
+    const placeElement = createPlaceElement({ name: place.name, imageURL: place.link })
+    addPlaceToProfile(placeElement);
+  });
 }
 
 
 // *main
-profileEditBtn.addEventListener('click', e => togglePopup(popup));
 profileEditBtn.addEventListener('click', initProfileForm);
-popupCloseBtn.addEventListener('click', e => togglePopup(popup));
-popup.addEventListener('submit', formSubmitHandler);
+popupProfileCloseBtn.addEventListener('click', e => togglePopup(popupProfile));
+popupProfile.addEventListener('submit', formSubmitHandler);
 
-profileAddBtn.addEventListener('click', e => togglePopup(popupPlace));
 profileAddBtn.addEventListener('click', initPlaceForm)
 popupPlaceCloseBtn.addEventListener('click', e => togglePopup(popupPlace));
 popupPlace.addEventListener('submit', formPlaceSubmitHandler);
-popupPhotoCloseBtn.addEventListener('click', e => togglePopup(popupPhoto));
 
+popupPhotoCloseBtn.addEventListener('click', e => togglePopup(popupPhoto));
 
 initPlaces(...initialCards);
