@@ -2,10 +2,15 @@
 @import url(./__close-btn/popup__close-btn.css);
 @import url(./__header/popup__header.css);
 @import url(./__save-btn/popup__save-btn.css);
+@import url(./__save-btn/_disabled/popup__save-btn_disabled.css);
 @import url(./__input/popup__input.css);
+@import url(./__input/_state/popup__input_state_error.css);
 @import url(./__photo-container/popup__photo-container.css);
 @import url(./__photo/popup__photo.css);
 @import url(./__photo-description/popup__photo-description.css);
+@import url(./__error/popup__error.css);
+@import url(./__error/_visible/popup__error_visible.css);
+@import url(./__field/popup__field.css);
 
 
 .popup {

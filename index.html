@@ -53,10 +53,16 @@
   <form method="POST" action="#" class="popup popup_type_edit-profile" name="profile-form">
     <div class="popup__container">
       <h2 class="popup__header">Редактировать профиль</h2>
-      <input type="text" placeholder="Полное имя" name="full-name" required
-        class="popup__input popup__input_el_full-name" />
-      <input type="text" placeholder="Описание" name="description" required
-        class="popup__input popup__input_el_description" />
+      <label for="full-name" class="popup__field">
+        <input type="text" placeholder="Полное имя" name="full-name" id="full-name" required minlength="2"
+          maxlength="40" class="popup__input popup__input_el_full-name" />
+        <span class='popup__error' id="full-name-error">test</span>
+      </label>
+      <label for="description" class="popup__field">
+        <input type="text" placeholder="Описание" name="description" id="description" required minlength="2"
+          maxlength="200" class="popup__input popup__input_el_description" />
+        <span class='popup__error' id="description-error"></span>
+      </label>
       <button type="submit" class="popup__save-btn">Сохранить</button>
       <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
     </div>
@@ -65,10 +71,16 @@
   <form method="POST" action="#" class="popup popup_type_new-place" name="new-place-form">
     <div class="popup__container">
       <h2 class="popup__header">Новое место</h2>
-      <input type="text" placeholder="Название" name="place-name" required
-        class="popup__input popup__input_el_place-name" />
-      <input type="text" placeholder="Ссылка на картинку" name="place-link" required
-        class="popup__input popup__input_el_place-link" />
+      <label for="place-name" class="popup__field">
+        <input type="text" placeholder="Название" name="place-name" id="place-name" required minlength="1"
+          maxlength="30" class="popup__input popup__input_el_place-name" />
+        <span class='popup__error' id="place-name-error"></span>
+      </label>
+      <label for="place-link" class="popup__field">
+        <input type="url" placeholder="Ссылка на картинку" name="place-link" id="place-link" required
+          class="popup__input popup__input_el_place-link" />
+        <span class='popup__error' id="place-link-error"></span>
+      </label>
       <button type="submit" class="popup__save-btn">Создать</button>
       <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
     </div>
@@ -95,6 +107,7 @@
   </template>
 
   <!-- *My JS section-->
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 
