@@ -1,30 +1,4 @@
-// *data
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+
 
 // *popup elements
 const popupProfile = document.querySelector('.popup_type_edit-profile');
@@ -46,7 +20,7 @@ const popupImage = popupPhoto.querySelector('.popup__photo');
 const popupPhotoDescription = popupPhoto.querySelector('.popup__photo-description');
 
 // *profile elements
-const profileAddBtn = document.querySelector('.profile__add-btn')
+const profileAddBtn = document.querySelector('.profile__add-btn');
 const profileEditBtn = document.querySelector('.profile__edit-btn');
 const profileFullName = document.querySelector('.profile__full-name');
 const profileDescription = document.querySelector('.profile__description');
@@ -70,7 +44,7 @@ function getProfile() {
  * Initislaize profile  form
  */
 function initProfileForm() {
-  let profile = getProfile();
+  const profile = getProfile();
 
   popupProfileFullName.value = profile.fullName;
   popupProfileDescription.value = profile.description;
@@ -204,7 +178,7 @@ function addPlaceToProfile(placeElement) {
  */
 function initPlaces(...places) {
   places.forEach(place => {
-    const placeElement = createPlaceElement({ name: place.name, imageURL: place.link })
+    const placeElement = createPlaceElement({ name: place.name, imageURL: place.link });
     addPlaceToProfile(placeElement);
   });
 }
@@ -215,7 +189,7 @@ function initPlaces(...places) {
  */
 function popupKeyHandler(evt) {
   if (evt.key === 'Escape') {
-    togglePopup(evt.currentTarget)
+    togglePopup(evt.currentTarget);
   }
 }
 
@@ -226,7 +200,7 @@ function popupKeyHandler(evt) {
  * @param {Function} sabmitHandler callback for submit event
  */
 function setPopupEventListeners(popup, closeBtn, sabmitHandler) {
-  closeBtn.addEventListener('click', e => togglePopup(popup));
+  closeBtn.addEventListener('click', () => togglePopup(popup));
   popup.addEventListener('keydown', popupKeyHandler);
 
   if (sabmitHandler) {
@@ -241,7 +215,7 @@ function setPopupEventListeners(popup, closeBtn, sabmitHandler) {
 
   popup.addEventListener('click', e => {
     if (e.currentTarget === e.target) {
-      togglePopup(popup)
+      togglePopup(popup);
     }
   });
 }
@@ -251,7 +225,7 @@ function setPopupEventListeners(popup, closeBtn, sabmitHandler) {
 profileEditBtn.addEventListener('click', initProfileForm);
 setPopupEventListeners(popupProfile, popupProfileCloseBtn, formProfileSubmitHandler);
 
-profileAddBtn.addEventListener('click', initPlaceForm)
+profileAddBtn.addEventListener('click', initPlaceForm);
 setPopupEventListeners(popupPlace, popupPlaceCloseBtn, formPlaceSubmitHandler);
 
 setPopupEventListeners(popupPhoto, popupPhotoCloseBtn);

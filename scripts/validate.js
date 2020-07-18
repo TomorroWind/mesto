@@ -7,7 +7,7 @@ const validationConfiguration = {
   inactiveButtonClass: 'popup__save-btn_disabled',
   inputErrorClass: 'popup__input_state_error',
   errorClass: 'popup__error_visible'
-}
+};
 
 //* function declarations
 
@@ -23,7 +23,7 @@ function showInputError(formElement, inputElement, errorMessage, config) {
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(config.errorClass);
-};
+}
 
 /**
  * Hides input error from user
@@ -36,7 +36,7 @@ function hideInputError(formElement, inputElement, config) {
   inputElement.classList.remove(config.inputErrorClass);
   errorElement.classList.remove(config.errorClass);
   errorElement.textContent = '';
-};
+}
 
 /**
  * Checks that input element contains valid data
@@ -50,7 +50,7 @@ function checkInputValidity(formElement, inputElement, config) {
   } else {
     hideInputError(formElement, inputElement, config);
   }
-};
+}
 
 /**
  * Check that all input element have valid data status
@@ -60,7 +60,7 @@ function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   })
-};
+}
 
 /**
  * Enable/disable submit button based on data validation
@@ -75,7 +75,7 @@ function toggleButtonState(inputList, buttonElement, config) {
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
   }
-};
+}
 
 /**
  * Set validation event listeners on form
@@ -96,7 +96,7 @@ function setEventListeners(formElement, config) {
       toggleButtonState(inputList, buttonElement, config);
     });
   });
-};
+}
 
 /**
  * Re-check form data validity and update element state accordingly
@@ -112,8 +112,7 @@ function updateFormValidationState(formElement, config) {
   }
 
   inputList.forEach((inputElement) => {
-    checkInputValidity(formElement, inputElement, config);
-    toggleButtonState(inputList, buttonElement, config);
+    hideInputError(formElement, inputElement, config);
   });
 }
 
@@ -124,7 +123,7 @@ function updateFormValidationState(formElement, config) {
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => setEventListeners(formElement, config));
-};
+}
 
 
 // *main
