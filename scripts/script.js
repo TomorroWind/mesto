@@ -227,13 +227,17 @@ function popupKeyHandler(evt) {
  */
 function setPopupEventListeners(popup, closeBtn, sabmitHandler) {
   closeBtn.addEventListener('click', e => togglePopup(popup));
+  popup.addEventListener('keydown', popupKeyHandler);
 
   if (sabmitHandler) {
     popup.addEventListener('submit', sabmitHandler);
   }
 
-  popup.addEventListener('transitionend', e => closeBtn.focus());
-  popup.addEventListener('keydown', popupKeyHandler);
+  popup.addEventListener('transitionend', e => {
+    if (e.currentTarget === e.target) {
+      closeBtn.focus();
+    }
+  });
 
   popup.addEventListener('click', e => {
     if (e.currentTarget === e.target) {
