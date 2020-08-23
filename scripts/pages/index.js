@@ -47,7 +47,7 @@ function initPlaceForm() {
 
 /**
  * Handle submit event for popup-save button
- * @param {object} evt contanin event infomration
+ * @param {object} formData contanin field values from form
  */
 function formProfileSubmitHandler(formData) {
 
@@ -60,7 +60,7 @@ function formProfileSubmitHandler(formData) {
 
 /**
  * Handle submit event for popup-save button
- * @param {object} evt contanin event infomration
+ * @param {object} formData contanin field values from form
  */
 function formPlaceSubmitHandler(formData) {
 
