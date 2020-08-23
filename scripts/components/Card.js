@@ -1,17 +1,13 @@
-export const popupPhoto = document.querySelector('.popup_type_photo');
-export const popupPhotoCloseBtn = popupPhoto.querySelector('.popup__close-btn');
-const popupImage = popupPhoto.querySelector('.popup__photo');
-const popupPhotoDescription = popupPhoto.querySelector('.popup__photo-description');
-
 /**
  *  Represent place card object
  */
-export class Card {
+export default class Card {
 
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, photoClickHandler) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._photoClickHandler = photoClickHandler;
   }
 
   /**
@@ -54,7 +50,7 @@ export class Card {
 
     cardLike.addEventListener('click', e => this._toggleLike(e.target));
     cardRemoveBtn.addEventListener('click', e => this._removeCard(e.target));
-    cardPhoto.addEventListener('click', () => this._placePhotoClickHandler());
+    cardPhoto.addEventListener('click', () => this._photoClickHandler(this._link, this._name));
   }
 
   /**
@@ -72,28 +68,4 @@ export class Card {
   _removeCard(removeCardBtn) {
     removeCardBtn.closest('.place').remove();
   }
-
-  /**
-   * Handle click on place object
-   */
-  _placePhotoClickHandler() {
-    this._initPhotoForm();
-    this._togglePopupPhoto();
-  }
-
-  /**
-   * Inititliaze photo popup
-   */
-  _initPhotoForm() {
-    popupImage.src = this._link;
-    popupPhotoDescription.textContent = this._name;
-  }
-
-  /**
-   *  Open/close photo popup form
-   */
-  _togglePopupPhoto() {
-    popupPhoto.classList.toggle('popup_opened');
-  }
-
 }
