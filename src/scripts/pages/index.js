@@ -1,3 +1,4 @@
+import './index.css';
 import Card from '../components/Card.js';
 import PopupWidthImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
