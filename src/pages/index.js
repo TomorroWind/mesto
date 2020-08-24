@@ -1,6 +1,6 @@
 import './index.css';
 import Card from '../components/Card.js';
-import PopupWidthImage from '../components/PopupWithImage.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -12,15 +12,18 @@ import {
   popupPlaceSelector,
   profileFullNameSelector,
   profileDescSeletor,
-  profileAddBtn,
-  profileEditBtn,
-  popupProfileFullName,
-  popupProfileDescription,
-  popupPlaceLink,
-  popupPlaceName,
   validationConfiguration,
   popupPhotoSelector
 } from '../utils/constants.js';
+
+// * const declaration
+const profileAddBtn = document.querySelector('.profile__add-btn');
+const profileEditBtn = document.querySelector('.profile__edit-btn');
+const popupProfileFullName = document.querySelector('.popup__input_el_full-name');
+const popupProfileDescription = document.querySelector('.popup__input_el_description');
+const popupPlaceName = document.querySelector('.popup__input_el_place-name');
+const popupPlaceLink = document.querySelector('.popup__input_el_place-link');
+
 
 // *function declarations
 
@@ -33,7 +36,7 @@ function initProfileForm(userInfo) {
   popupProfileFullName.value = userInfo.fullName;
   popupProfileDescription.value = userInfo.description;
 
-  formValidator.updateFormValidationState(document.querySelector(popupProfileSelector));
+  profileFormValidator.updateFormValidationState(document.querySelector(popupProfileSelector));
 }
 
 /**
@@ -43,7 +46,7 @@ function initPlaceForm() {
   popupPlaceName.value = '';
   popupPlaceLink.value = '';
 
-  formValidator.updateFormValidationState(document.querySelector(popupPlaceSelector));
+  placeFormValidator.updateFormValidationState();
 }
 
 /**
@@ -65,41 +68,53 @@ function formProfileSubmitHandler(formData) {
  */
 function formPlaceSubmitHandler(formData) {
 
-  const placeElement = new Card({
+  createPlaceCard({
     name: formData['place-name'].trim(),
     link: formData['place-link'].trim(),
-  }, '#place-template', handleCardClick).generateCard();
+  });
 
-  placeSection.addItem(placeElement);
 }
 
 /**
    * Handle click on place object
    */
 function handleCardClick(link, name) {
-  const popup = new PopupWidthImage(popupPhotoSelector);
-  popup.setEventListeners();
-  popup.open({ link, name });
+  popupPhoto.open({ link, name });
+}
+
+/**
+ * Create HTML element for place and add to page
+ * @param {object} place contains infomation about place card
+ */
+function createPlaceCard(place) {
+  const placeElement = new Card(place, '#place-template', handleCardClick).generateCard();
+  placeSection.addItem(placeElement);
+
+  return placeElement;
 }
 
 // *main
 const placeSection = new Section({
   items: initialCards,
   renderer: (place) => {
-    const placeElement = new Card(place, '#place-template', handleCardClick).generateCard();
-    placeSection.addItem(placeElement);
+    createPlaceCard(place);
   }
 }, placeSectionSelector);
 
+const popupPhoto = new PopupWithImage(popupPhotoSelector);
 const profilePopup = new PopupWithForm(popupProfileSelector, formProfileSubmitHandler, initProfileForm);
 const placePopup = new PopupWithForm(popupPlaceSelector, formPlaceSubmitHandler, initPlaceForm);
-const formValidator = new FormValidator(validationConfiguration);
+const profileFormValidator = new FormValidator(validationConfiguration, popupProfileSelector);
+const placeFormValidator = new FormValidator(validationConfiguration, popupPlaceSelector);
 const userInfo = new UserInfo(profileFullNameSelector, profileDescSeletor);
 
 profilePopup.setEventListeners();
 placePopup.setEventListeners();
+popupPhoto.setEventListeners();
 profileEditBtn.addEventListener('click', () => profilePopup.open(userInfo.getUserInfo()));
 profileAddBtn.addEventListener('click', () => placePopup.open());
 
-formValidator.enableValidation();
+profileFormValidator.enableValidation();
+placeFormValidator.enableValidation();
+
 placeSection.renderItems();

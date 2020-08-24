@@ -12,6 +12,7 @@ export default class Popup {
    *  Opens popup form
    */
   open() {
+    this._popup.addEventListener('keydown', (evt) => this._handleEscClose(evt));
     this._popup.classList.add('popup_opened');
   }
 
@@ -19,6 +20,7 @@ export default class Popup {
    *  Closes popup form
    */
   close() {
+    this._popup.removeEventListener('keydown', (evt) => this._handleEscClose(evt));
     this._popup.classList.remove('popup_opened');
   }
 
@@ -38,8 +40,6 @@ export default class Popup {
   setEventListeners() {
     const closeBtn = this._popup.querySelector(popupCloseBtnSelector);
     closeBtn.addEventListener('click', () => this.close());
-
-    this._popup.addEventListener('keydown', (evt) => this._handleEscClose(evt));
 
     this._popup.addEventListener('transitionend', e => {
       if (e.currentTarget === e.target) {
