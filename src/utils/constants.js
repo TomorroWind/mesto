@@ -8,12 +8,6 @@ export const profileDescSeletor = '.profile__description';
 export const popupImageSelector = '.popup__photo';
 export const popupPhotoDescriptionSelector = '.popup__photo-description';
 
-export const profileAddBtn = document.querySelector('.profile__add-btn');
-export const profileEditBtn = document.querySelector('.profile__edit-btn');
-export const popupProfileFullName = document.querySelector('.popup__input_el_full-name');
-export const popupProfileDescription = document.querySelector('.popup__input_el_description');
-export const popupPlaceName = document.querySelector('.popup__input_el_place-name');
-export const popupPlaceLink = document.querySelector('.popup__input_el_place-link');
 
 export const validationConfiguration = {
   formSelector: '.popup',

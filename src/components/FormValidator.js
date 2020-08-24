@@ -3,32 +3,39 @@
  *  Implements validation for forms
  */
 export default class FormValidator {
-  constructor(configuration) {
+  constructor(configuration, formSelector) {
     this._config = configuration;
+    this._form = document.querySelector(formSelector);
   }
 
   /**
  * Switch on data validation on all forms
  */
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._config.formSelector));
-    formList.forEach((formElement) => this._setEventListeners(formElement));
+    if (this._form === undefined) {
+      const formList = Array.from(document.querySelectorAll(this._config.formSelector));
+      formList.forEach((formElement) => this._setEventListeners(formElement));
+    }
+    else {
+      this._setEventListeners(this._form);
+    }
   }
 
   /**
  * Re-check form data validity and update element state accordingly
  * @param {HTMLElement} formElement form HTML element to validate
  */
-  updateFormValidationState(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll(this._config.inputSelector));
-    const buttonElement = formElement.querySelector(this._config.submitButtonSelector);
+  updateFormValidationState() {
+
+    const inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
+    const buttonElement = this._form.querySelector(this._config.submitButtonSelector);
 
     if (buttonElement) {
       this._toggleButtonState(inputList, buttonElement);
     }
 
     inputList.forEach((inputElement) => {
-      this._hideInputError(formElement, inputElement);
+      this._hideInputError(this._form, inputElement);
     });
   }
 
