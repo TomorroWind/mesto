@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="место javascript Яндекс.Практикум" />
-  <!-- Файлы форматированы с использованием Prettier -->
   <meta name="keywords" content="html, css, javascript, forms, popup, обучение, web программирование" />
   <meta name="author" content="Михаил Пименов" />
 
@@ -23,13 +22,18 @@
     <main>
       <!-- *Profile section -->
       <section class="profile content__profile">
-        <img src="./images/avatar-custo.jpg" alt="Фотография пользователя" class="profile__avatar" />
+        <div class="profile__avatar-container">
+          <img
+            src="https://images.unsplash.com/photo-1582266255765-fa5cf1a1d501?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+            alt="Фотография пользователя" class="profile__avatar" />
+          <button type="button" aria-label="Редактировать профиль" class="profile__edit-avatar-btn"></button>
+        </div>
         <div class="profile__info">
           <h1 class="profile__full-name">
-            Жак-Ив Кусто
+            ...
           </h1>
           <button type="button" aria-label="Редактировать профиль" class="profile__edit-btn"></button>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__description">...</p>
         </div>
         <button type="button" aria-label="Добавить место" class="profile__add-btn"></button>
       </section>
@@ -83,6 +87,29 @@
     </div>
   </form>
 
+  <form method="POST" action="#" class="popup popup_type_delete-place" name="delete-place-form">
+    <div class="popup__container">
+      <h2 class="popup__header">Вы уверены?</h2>
+      <input type="hidden" class="popup__input" name="card" id="card" value="">
+      <button type="submit" class="popup__save-btn">Да</button>
+      <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
+    </div>
+  </form>
+
+  <form method="POST" action="#" class="popup popup_type_edit-avatar" name="edit-avatar-form">
+    <div class="popup__container">
+      <h2 class="popup__header">Обновить аватар</h2>
+      <label for="avatar" class="popup__field">
+        <input type="url" placeholder="Ссылка на картинку" name="avatar" id="avatar" required
+          class="popup__input popup__input_el_avatar" />
+        <span class='popup__error' id="avatar-error"></span>
+      </label>
+      <button type="submit" class="popup__save-btn">Сохранить</button>
+      <button type="button" aria-label="Закрыть" class="popup__close-btn"></button>
+    </div>
+  </form>
+
+
   <section class="popup popup_type_photo">
     <figure class="popup__photo-container">
       <img src="#" alt="Фотография места" class="popup__photo" />
@@ -97,7 +124,10 @@
       <img src="#" alt="Фотография места" class="place__photo" />
       <div class="place__description">
         <h3 class="place__name"></h3>
-        <button type="button" class="place__like"></button>
+        <div class="place__like-container">
+          <button type="button" class="place__like"></button>
+          <p class="place__like-count"></p>
+        </div>
         <button type="button" class="place__remove-btn"></button>
       </div>
     </article>
