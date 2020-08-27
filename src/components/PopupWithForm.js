@@ -27,7 +27,11 @@ export default class PopupWithForm extends Popup {
    * @param {object} initData data to iniitialize form
    */
   open(initData) {
-    this._formInitHandler(initData);
+
+    if (this._formInitHandler !== undefined) {
+      this._formInitHandler(initData);
+    }
+
     super.open();
   }
 
@@ -48,10 +52,55 @@ export default class PopupWithForm extends Popup {
     this._popup.addEventListener('submit', (evt) => {
 
       evt.preventDefault();
-      this._formSubmitHandler(this._getInputValues());
 
-      this.close();
+      this._setSubmitStatusInProcess();
+
+      this._formSubmitHandler(this._getInputValues())
+        .then(() => this.close())
+        .then(() => this._setSubmitStatusCompleted());
     });
+  }
+
+  /**
+   *  Updates popup design according progress status
+   */
+  _setSubmitStatusInProcess() {
+    const submitBtn = this._popup.querySelector('.popup__save-btn');
+
+    switch (submitBtn.textContent) {
+      case 'Сохранить':
+        submitBtn.textContent = 'Сохранение...';
+        break;
+
+      case 'Да':
+        submitBtn.textContent = 'Выполняется...';
+        break;
+
+      case 'Создать':
+        submitBtn.textContent = 'Создание...';
+        break;
+    }
+  }
+
+  /**
+   *  Updates popup design according complete status
+   */
+  _setSubmitStatusCompleted() {
+    const submitBtn = this._popup.querySelector('.popup__save-btn');
+
+    switch (submitBtn.textContent) {
+      case 'Сохранение...':
+        submitBtn.textContent = 'Сохранить';
+        break;
+
+      case 'Выполняется...':
+        submitBtn.textContent = 'Да';
+        break;
+
+      case 'Создание...':
+        submitBtn.textContent = 'Создать';
+        break;
+    }
   }
 }
 

@@ -16,6 +16,10 @@ export default class Section {
     this._container.prepend(element);
   }
 
+  removeItem(itemId) {
+    document.getElementById(itemId).remove();
+  }
+
   /**
    *  Clears section from elements
    */
@@ -26,7 +30,11 @@ export default class Section {
   /**
    *  Creates elements in the section
    */
-  renderItems() {
+  renderItems(items = null) {
+    if (items !== undefined) {
+      this._renderedItems = items;
+    }
+
     this.clear();
 
     this._renderedItems.forEach(item => {
