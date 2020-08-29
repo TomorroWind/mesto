@@ -55,6 +55,10 @@ function initPlaceForm() {
   placeFormValidator.updateFormValidationState();
 }
 
+/**
+ * Initialize delete card form
+ * @param {string} cardId card identifier to delete
+ */
 function initDeletePlaceForm(cardId) {
   document.querySelector(popupDeletePlaceSelector).elements.card.value = cardId;
 }
@@ -91,6 +95,10 @@ function formPlaceSubmitHandler(formData) {
     .then(place => createPlaceCard(place));
 }
 
+/**
+ * Handle submit event for delete place form
+ * @param {object} formData containes data from delete place form
+ */
 function formDeletePlaceSubmitHandler(formData) {
   return api.deleteCard(formData.card)
     .then(() => placeSection.removeItem(formData.card));
@@ -103,10 +111,17 @@ function handleCardClick(link, name) {
   popupPhoto.open({ link, name });
 }
 
+/**
+ * Handle click event on delete card button
+ * @param {string} cardId card identifier to delete
+ */
 function handleRemoveCardClick(cardId) {
   deletePlacePopup.open(cardId);
 }
 
+/**
+ * Handle click event on like card button
+ */
 function handleLikeCardClick() {
   if (this._isLiked) {
     return api.removeLike(this._id)
@@ -140,12 +155,20 @@ function createPlaceCard(place) {
   return placeElement;
 }
 
+/**
+ * Inititalize edit avatar form
+ * @param {url} avatar link to picture to avatar
+ */
 function initEditAvatarForm(avatar) {
 
   popupAvatar.value = avatar;
   avatarFormValidator.updateFormValidationState();
 }
 
+/**
+ * Handle submit event for edit avatar form
+ * @param {object} formData contains data from edit avatar form
+ */
 function formEditAvatarSubmitHandler(formData) {
   return api.updateAvatar(formData.avatar)
     .then(data => userInfo.setUserInfo({
@@ -164,6 +187,7 @@ const placeSection = new Section({
   }
 }, placeSectionSelector);
 
+// component inialization
 const popupPhoto = new PopupWithImage(popupPhotoSelector);
 const profilePopup = new PopupWithForm(popupProfileSelector, formProfileSubmitHandler, initProfileForm);
 const placePopup = new PopupWithForm(popupPlaceSelector, formPlaceSubmitHandler, initPlaceForm);
@@ -175,6 +199,7 @@ const avatarFormValidator = new FormValidator(validationConfiguration, popupEdit
 const userInfo = new UserInfo(profileFullNameSelector, profileDescSeletor, profileAvatarSelector);
 const api = new Api(token, groupId);
 
+// set evetn listeners
 profilePopup.setEventListeners();
 placePopup.setEventListeners();
 deletePlacePopup.setEventListeners();
@@ -185,22 +210,31 @@ profileEditBtn.addEventListener('click', () => profilePopup.open(userInfo.getUse
 profileAddBtn.addEventListener('click', () => placePopup.open());
 profileEditAvatarBtn.addEventListener('click', () => editAvatarPopup.open(userInfo.getUserInfo().avatar));
 
+// enable form valiadtion
 profileFormValidator.enableValidation();
 placeFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-api.getUserInfo()
-  .then(data => userInfo.setUserInfo({
-    fullName: data.name,
-    description: data.about,
-    avatar: data.avatar,
-    id: data._id
-  }));
+// page content inialization
+Promise.all([
+  api.getUserInfo(),
+  api.getCards()
+])
+  .then(([userData, cards]) => {
 
-api.getCards()
-  .then(cards => {
+    userInfo.setUserInfo({
+      fullName: userData.name,
+      description: userData.about,
+      avatar: userData.avatar,
+      id: userData._id
+    });
+
     placeSection.renderItems(cards);
+  })
+  .catch((err) => {
+    console.log(err);
   });
+
 
 
 
