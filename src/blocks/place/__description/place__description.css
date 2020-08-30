@@ -1,8 +1,0 @@
-.place__description {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 21px 21px 24px 21px;
-}
